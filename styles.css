@@ -1,0 +1,7 @@
+#load-tweets-btn {
+	display: none;
+}
+
+#tweet-container .tweet {
+	border: solid 1px red;
+}
