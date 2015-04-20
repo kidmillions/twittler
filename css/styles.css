@@ -1,0 +1,33 @@
+body {
+  background-color: #4d3f4f;
+}
+h1 {
+  display: inline-block;
+  margin: 0 30px;
+}
+#tweet-container {
+  border-radius: 10px;
+  background-color: #5426b5;
+  padding: 10px;
+}
+#tweet-container .row .tweet {
+  float: left;
+}
+img {
+  border: 2px solid #d556e8;
+}
+body #tweet-container .row {
+  padding: 12px 0px;
+}
+.tweet-message,
+h1 {
+  color: white;
+}
+.tweet-date {
+  color: #bead57;
+  font-size: 10px;
+}
+.title-image {
+  height: 150px;
+  width: auto;
+}

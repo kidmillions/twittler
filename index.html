@@ -1,14 +1,39 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="bower_components/foundation/css/normalize.css" />
+    <link rel="stylesheet" href="bower_components/foundation/css/foundation.css" />
+    <link rel="stylesheet" href="css/styles.css" />
     <script src="jquery.js"></script>
     <script src="jquery.timeago.js"></script>
     <script src="data_generator.js"></script>
   </head>
   <body>
-    <button id="load-tweets-btn">Load latest Tweets</button>
-    <div id="tweet-container"></div>
+    <div class="row">
+      <img src="img/midler2.jpg" class="title-image left">
+      <h1 class="text-center">Bette Midler's Twiddler</h1>
+      <img src="img/midler3.jpg" class="title-image right">
+      <hr>
+    </div>
+    <div class="row">
+      <div class="small-3 columns">
+        <button id="load-tweets-btn">Load latest Tweets</button>
+      </div>
+      <div class="small-6 columns">
+          <textarea placeholder="What are you up to today, Mrs. Midler?"></textarea>
+      </div>
+      <div class="small-3 columns">
+        <button id="create-tweet-btn">Submit</button>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="small-12 columns">
+        <div id="tweet-container"></div>
+      </div>
+    </div>
+    
+    
     <script>
 
       $(document).ready(function(){
@@ -26,9 +51,9 @@
         var getTweets = function() {
           while(index < streams.home.length){
           var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
+          var $tweet = $('<div class="row"></div>');
    
-          $tweet.html("<a class='username' username='" + tweet.user + "' href='#'>@" + tweet.user + "</a>: "
+          $tweet.html("<div class='small-1 columns'><img src='img/midler.jpg' class='bette-photo'></div><div class='small-11 columns tweet'><a class='username' username='" + tweet.user + "' href='#'>@" + tweet.user + "</a>: "
             + "<div class='tweet-message'>" + tweet.message + '</div>' 
              + "<div class='tweet-date'>" + jQuery.timeago(tweet.created_at) + "</div>");
           $tweet.prependTo($tweetContainer);
@@ -53,8 +78,7 @@
             showUserTweets(currentUser, false);
           }
           
-          
-        })
+        });
 
 
 
@@ -64,8 +88,9 @@
           var userTweets = streams.users[username]
           while (userIndex < userTweets.length) {
             var tweet = userTweets[userIndex];
-            var $tweet = $('<div></div>');
-            $tweet.html("<a class='username' username='" + tweet.user + "' href='#'>@" + tweet.user + "</a>: "
+            var $tweet = $('<div class="row"></div>');
+   
+          $tweet.html("<div class='small-1 columns'><img src='img/midler.jpg' class='bette-photo'></div><div class='small-11 columns tweet'><a class='username' username='" + tweet.user + "' href='#'>@" + tweet.user + "</a>: "
             + "<div class='tweet-message'>" + tweet.message + '</div>' 
              + "<div class='tweet-date'>" + jQuery.timeago(tweet.created_at) + "</div>");
             $tweet.prependTo($tweetContainer);
@@ -80,6 +105,7 @@
           currentUser = username;
           userIndex = 0;
           showUserTweets(username, true);
+          $(this).append($returnBtn);
         });
 
 
